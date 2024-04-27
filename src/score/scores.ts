@@ -27,8 +27,9 @@ const changeMaxValue = (values: number[]) : number[] => {
   const sum = result.reduce((acc, val) => acc + val, 0);
   if (sum !== 0) {
     const max = Math.max(...result);
-    const adjustedMax = max - Math.abs(sum)
     const maxIndex = result.indexOf(max);
+    const sumExcludeMax = result.filter(num => num !== max).reduce((acc, cur) => acc + cur, 0)
+    const adjustedMax = Math.abs(sumExcludeMax)
     result[maxIndex] = adjustedMax;
   }
   return result

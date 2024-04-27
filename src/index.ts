@@ -35,3 +35,7 @@ const separateDateFromStyle = (values: string[]): [string[], string[]] => {
   const player4Values = values.filter(i => i.includes('四般南喰赤－'));
   return [player3Values, player4Values]
 }
+
+(async () => {
+  handler()
+})()
