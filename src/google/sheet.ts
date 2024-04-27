@@ -1,6 +1,7 @@
 import { GoogleSpreadsheet, GoogleSpreadsheetRow, GoogleSpreadsheetWorksheet } from "google-spreadsheet";
 import { JWT } from "google-auth-library";
 import { convertToScoreMetrix } from "../score/scores";
+import { convertTimeFormat } from "../utils/date";
 
 const createSheetsInstance = (sheetID: string, serviceAccountAuth: JWT): GoogleSpreadsheet => {
   const doc = new GoogleSpreadsheet(sheetID, serviceAccountAuth);
@@ -11,7 +12,8 @@ const getLatestDateandTimestamp = (rows:  GoogleSpreadsheetRow<Record<string, an
   const lastID = rows.length
   const lastDate: string = rows[lastID-1].get("Date")
   const lastTimestamp: string = rows[lastID-1].get("Timestamp")
-  return [lastDate, lastTimestamp]
+  const convertedTimeFormat = convertTimeFormat(lastTimestamp)
+  return [lastDate, convertedTimeFormat]
 }
 
 const filtterInsertValues = (values: (string | number)[][], lastDate: string, lastTimestamp: string): (string | number)[][] => {

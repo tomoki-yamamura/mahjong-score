@@ -17,4 +17,15 @@ function formattedInsertDate() : string {
   return `${year}/${month}/${day}`;
 }
 
-export { formattedFetchDate, formattedInsertDate}
+function convertTimeFormat(timeString: string): string {
+  if (/^\d:\d{2}$/.test(timeString)) {
+      const parts = timeString.split(':');
+      const hour = parts[0].padStart(2, '0');
+      const minute = parts[1];
+      return hour + ':' + minute;
+  } else {
+      return timeString;
+  }
+}
+
+export { formattedFetchDate, formattedInsertDate, convertTimeFormat}
