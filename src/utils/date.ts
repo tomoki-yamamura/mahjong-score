@@ -14,7 +14,7 @@ function formattedFetchDate() : string {
 
 function formattedInsertDate() : string {
   const [year, month, day] = getTodayDate();
-  return `${year}/${month}/${day}`;
+  return `${year}-${month}-${day}`;
 }
 
 function convertTimeFormat(timeString: string): string {
