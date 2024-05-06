@@ -19,11 +19,11 @@ https://gist.github.com/AnalyzePlatypus/a486323a331c91f738f2245ff9a1c66f
 
 2. Set the sheet & Header like this
 
-You can set the first sheet for 3 players mode.
+You can set the first sheet Header for 3 players mode.
 |ID|Date|Timestamp|PlayerA|PlayerB|PlayerC| ...more |
 |:-:|:-:|:-:|:-:|:-:|:-:|:-:|
 
-You can set the second sheet for 4 players mode.
+You can set the second sheet Header for 4 players mode.
 |ID|Date|Timestamp|PlayerA|PlayerB|PlayerC|PlayerD|...more|
 |:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
 
@@ -32,8 +32,6 @@ You can set the second sheet for 4 players mode.
 TENHO_ROOM_NUMBER=LXXXX
 MAIN_PLAYERS = PlayerA(,PlayerB,PlayerC)
 ```
-
-ref: 
 
 ## Installation
 
