@@ -22,17 +22,20 @@ const extractTimestamp = (extractScorePart: string): string | null => {
   }
 }
 
-const changeMaxValue = (values: number[]) : number[] => {
-  const result = [...values]
-  const sum = result.reduce((acc, val) => acc + val, 0);
+const changeMaxValue = (values: (number | string)[]): (number | string)[] => {
+  const numericValues = values.map(val => typeof val === 'number' ? val : 0);
+  
+  const sum = numericValues.reduce((acc, val) => acc + val, 0);
   if (sum !== 0) {
-    const max = Math.max(...result);
-    const maxIndex = result.indexOf(max);
-    const sumExcludeMax = result.filter(num => num !== max).reduce((acc, cur) => acc + cur, 0)
-    const adjustedMax = Math.abs(sumExcludeMax)
-    result[maxIndex] = adjustedMax;
+    const max = Math.max(...numericValues);
+    const maxIndex = numericValues.indexOf(max);
+    const sumExcludeMax = numericValues.reduce((acc, cur, index) => index === maxIndex ? acc : acc + cur, 0);
+    const adjustedMax = -sumExcludeMax;
+    numericValues[maxIndex] = adjustedMax;
   }
-  return result
+  
+  const result = values.map((val, index) => typeof val === 'number' ? numericValues[index] : val);
+  return result;
 }
 
 function dateAndTimestampIndex(headers: string[]): [number, number] {
@@ -45,7 +48,7 @@ function convertToScoreMetrix(rawArray: string[], headers: string[]): (string | 
   const result: (string | number)[][] = [];
   const [dateIndex, timeStampIndex] = dateAndTimestampIndex(headers)
   rawArray.forEach(element => {
-    const values: number[] = Array(headers.length).fill(0);
+    const values: (number | string)[] = Array(headers.length).fill('');
     headers.forEach((header, headerIndex) => {
       if (element.includes(header)) {
         const score = extractNumberFromValue(element, header) || 0
