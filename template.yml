@@ -4,11 +4,11 @@ Resources:
   MahjongScoreLambdaFunction:
     Type: 'AWS::Serverless::Function'
     Properties:
-      Handler: build/index.handler  # ビルド後の出力先
+      Handler: build/index.handler
       Runtime: nodejs18.x
       CodeUri: .
       MemorySize: 128
-      Timeout: 20  # 必要に応じてタイムアウトを調整
+      Timeout: 20
       Environment:
         Variables:
           NODE_ENV: production
