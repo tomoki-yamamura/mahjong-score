@@ -23,6 +23,8 @@ You can set the first sheet Header for 3 players mode.
 |ID|Date|Timestamp|PlayerA|PlayerB|PlayerC| ...more |
 |:-:|:-:|:-:|:-:|:-:|:-:|:-:|
 
+![](./doc/sheet_example.png)
+
 You can set the second sheet Header for 4 players mode.
 |ID|Date|Timestamp|PlayerA|PlayerB|PlayerC|PlayerD|...more|
 |:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
