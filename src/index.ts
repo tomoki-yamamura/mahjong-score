@@ -1,3 +1,4 @@
+import { Handler } from "aws-lambda";
 import { JWT } from "google-auth-library";
 import env from "dotenv";
 env.config();
@@ -16,7 +17,7 @@ const serviceAccountAuth = new JWT({
   scopes: ["https://www.googleapis.com/auth/spreadsheets"],
 });
 
-export const handler = async () => {
+export const handler: Handler = async (): Promise<void> => {
   const rawStrings = await convertToRawStrings(downloadAndExtractFile);
   if (rawStrings.length === 0) {
     console.log('No data to fetch');
@@ -36,6 +37,6 @@ const separateDateFromStyle = (values: string[]): [string[], string[]] => {
   return [player3Values, player4Values]
 }
 
-(async () => {
-  handler()
-})()
+// (async () => {
+//   handler()
+// })()
