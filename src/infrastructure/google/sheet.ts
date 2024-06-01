@@ -4,8 +4,8 @@ import {
   GoogleSpreadsheetWorksheet,
 } from "google-spreadsheet";
 import { JWT } from "google-auth-library";
-import { convertToScoreMetrix } from "../score/scores";
-import { convertTimeFormat } from "../utils/date";
+import { convertToScoreMetrix } from "../../score/scores";
+import { convertTimeFormat } from "../../utils/date";
 
 const createSheetsInstance = (
   sheetID: string,

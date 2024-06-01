@@ -3,9 +3,9 @@ import { JWT } from "google-auth-library";
 import env from "dotenv";
 env.config();
 
-import { convertToRawStrings } from "./tenho/raw";
-import { createSheetsInstance, insertValuesToSheet } from "./google/sheet";
-import { downloadAndExtractFile } from "./tenho/stream";
+import { convertToRawStrings } from "./infrastructure/tenho/raw";
+import { createSheetsInstance, insertValuesToSheet } from "./infrastructure/google/sheet";
+import { downloadAndExtractFile } from "./infrastructure/tenho/stream";
 
 const email = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL;
 const key = `${process.env.GOOGLE_PRIVATE_KEY}`.replace(/\\n/g, "\n");
