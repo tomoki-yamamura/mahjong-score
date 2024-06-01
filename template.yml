@@ -1,8 +1,8 @@
-AWSTemplateFormatVersion: '2010-09-09'
-Transform: 'AWS::Serverless-2016-10-31'
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: "AWS::Serverless-2016-10-31"
 Resources:
   MahjongScoreLambdaFunction:
-    Type: 'AWS::Serverless::Function'
+    Type: "AWS::Serverless::Function"
     Properties:
       Handler: build/index.handler
       Runtime: nodejs18.x
@@ -11,11 +11,15 @@ Resources:
       Timeout: 20
       Environment:
         Variables:
-          NODE_ENV: production
+          GOOGLE_SERVICE_ACCOUNT_EMAIL: GOOGLE_SERVICE_ACCOUNT_EMAIL
+          GOOGLE_PRIVATE_KEY: GOOGLE_PRIVATE_KEY
+          GOOGLE_SHEET_ID: GOOGLE_SHEET_ID
+          TENHO_ROOM_NUMBER: TENHO_ROOM_NUMBER
+          MAIN_PLAYERS: MAIN_PLAYERS
     Metadata:
       BuildMethod: esbuild
       BuildProperties:
         Minify: true
-        Target: 'es2020'
+        Target: "es2020"
         Sourcemap: true
-        EntryPoints: ['src/index.ts']
+        EntryPoints: ["src/index.ts"]

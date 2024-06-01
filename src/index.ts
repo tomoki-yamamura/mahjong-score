@@ -25,9 +25,9 @@ export const handler: Handler = async (): Promise<void> => {
   }
   const doc = createSheetsInstance(sheetID, serviceAccountAuth);
   const [player3Strings, player4Strings] = separateDateFromStyle(rawStrings);
-  insertValuesToSheet(doc, player3Strings, 0);
+  await insertValuesToSheet(doc, player3Strings, 0);
   if (player4Strings.length !== 0) {
-    insertValuesToSheet(doc, player4Strings, 1)
+    await insertValuesToSheet(doc, player4Strings, 1)
   }
 }
 
@@ -36,7 +36,3 @@ const separateDateFromStyle = (values: string[]): [string[], string[]] => {
   const player4Values = values.filter(i => i.includes('四般南喰赤－'));
   return [player3Values, player4Values]
 }
-
-// (async () => {
-//   handler()
-// })()
