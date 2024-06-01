@@ -8,7 +8,7 @@ Resources:
       Runtime: nodejs18.x
       CodeUri: .
       MemorySize: 128
-      Timeout: 20
+      Timeout: 60
       Environment:
         Variables:
           GOOGLE_SERVICE_ACCOUNT_EMAIL: GOOGLE_SERVICE_ACCOUNT_EMAIL
@@ -16,6 +16,8 @@ Resources:
           GOOGLE_SHEET_ID: GOOGLE_SHEET_ID
           TENHO_ROOM_NUMBER: TENHO_ROOM_NUMBER
           MAIN_PLAYERS: MAIN_PLAYERS
+          TZ: 'Asia/Tokyo'
+
     Metadata:
       BuildMethod: esbuild
       BuildProperties:
