@@ -1,22 +1,30 @@
 import axios, { AxiosResponse } from "axios";
 import { ITenhoClient } from "../../domain/infrastructure/tenho/client";
 import { createGunzip } from "zlib";
-
-class TenhoClient implements ITenhoClient {
+import { createTenhoScoreList } from "../factory/tenhoList";
+import TenhoScoreList from "../../domain/collection/tenhoScoreList";
+// const roomNumber = `${process.env.TENHO_ROOM_NUMBER}`
+class Client implements ITenhoClient {
   private url: string;
   constructor(url: string) {
     this.url = url;
   }
 
-  async getTenhoScoreData(): Promise<string[]> {
+  async getTenhoRoomScoreDatas(roomNumber: string): Promise<TenhoScoreList> {
     try {
       const rawString = await this.getRawStreamFromTenho();
-      const result: string[] = rawString.split("\n");
+      const scores = rawString.split("\n");
+      const filtedScores = this.filterScoresByRoom(scores, roomNumber)
+      const result = createTenhoScoreList(filtedScores)
       return result;
     } catch (error) {
       console.error(error);
       throw new Error("getTenhoScoreData error");
     }
+  }
+
+  private filterScoresByRoom(scores: string[], roomNumber: string): string[] {
+    return scores.filter(score => score.includes(roomNumber));
   }
 
   private async getRawStreamFromTenho(): Promise<string> {
@@ -43,3 +51,5 @@ class TenhoClient implements ITenhoClient {
     }
   }
 }
+
+export default Client;

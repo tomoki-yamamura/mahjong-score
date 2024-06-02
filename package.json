@@ -10,7 +10,8 @@
     "start": "ts-node ./src/index.ts",
     "test": "jest",
     "build": "npx tsc",
-    "sam:build": "sam build --use-container"
+    "sam:build": "sam build",
+    "sam:invoke": "sam local invoke --env-vars env.json"
   },
   "repository": {
     "type": "git",

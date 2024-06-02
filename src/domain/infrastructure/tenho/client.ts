@@ -1,3 +1,5 @@
+import TenhoScoreList from "../../collection/tenhoScoreList";
+
 export type ITenhoClient = {
-  getTenhoScoreData(): Promise<string[]>;
+  getTenhoRoomScoreDatas(roomNumber: string): Promise<TenhoScoreList>;
 }
