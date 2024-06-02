@@ -20,19 +20,29 @@ https://gist.github.com/AnalyzePlatypus/a486323a331c91f738f2245ff9a1c66f
 2. Set the sheet & Header like this
 
 You can set the first sheet Header for 3 players mode.
+You have to set PlayerName matches the player name you use in Tenho
 |ID|Date|Timestamp|PlayerA|PlayerB|PlayerC| ...more |
 |:-:|:-:|:-:|:-:|:-:|:-:|:-:|
 
 ![](./doc/sheet_example.png)
 
 You can set the second sheet Header for 4 players mode.
+You have to set PlayerName matches the player name you use in Tenho
 |ID|Date|Timestamp|PlayerA|PlayerB|PlayerC|PlayerD|...more|
 |:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
 
-3. You create room and player name at least one.Once you create them, you set the value as env
-```
-TENHO_ROOM_NUMBER=LXXXX
-MAIN_PLAYERS = PlayerA(,PlayerB,PlayerC)
+3. You create and set environment value in env.json
+
+```json
+{
+  "MahjongScoreLambdaFunction": {
+    "GOOGLE_SERVICE_ACCOUNT_EMAIL": "",
+    "GOOGLE_PRIVATE_KEY": "",
+    "GOOGLE_SHEET_ID": "",
+    "TENHO_ROOM_NUMBER": ""
+  }
+}
+
 ```
 
 ## Installation
