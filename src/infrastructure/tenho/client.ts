@@ -3,8 +3,8 @@ import { ITenhoClient } from "../../domain/infrastructure/tenho/client";
 import { createGunzip } from "zlib";
 import TenhoScoreList from "../../domain/collection/tenhoScoreList";
 import { createTenhoScoreList } from "./factory/tenhoList";
-// const roomNumber = `${process.env.TENHO_ROOM_NUMBER}`
-class Client implements ITenhoClient {
+
+class ITenhoClientImpl implements ITenhoClient {
   private url: string;
   constructor(url: string) {
     this.url = url;
@@ -52,4 +52,4 @@ class Client implements ITenhoClient {
   }
 }
 
-export default Client;
+export default ITenhoClientImpl;

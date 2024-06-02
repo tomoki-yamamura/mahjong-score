@@ -6,7 +6,7 @@ import { Row } from "../../domain/entites/row";
 import { convertInsertRows } from "./factory/insertRows";
 import { SheetId, SheetIdEnums } from "../../domain/enums/sheetId";
 
-class Client implements IGoogleShpreadSheetClient {
+class IGoogleShpreadSheetClientImpl implements IGoogleShpreadSheetClient {
   private doc: GoogleSpreadsheet;
   constructor(
     sheetAuthId: string,
@@ -44,4 +44,4 @@ class Client implements IGoogleShpreadSheetClient {
   }
 }
 
-export default Client;
+export default IGoogleShpreadSheetClientImpl;

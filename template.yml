@@ -1,6 +1,10 @@
 AWSTemplateFormatVersion: "2010-09-09"
 Transform: "AWS::Serverless-2016-10-31"
 Resources:
+  MahjongScoreQueue:
+    Type: AWS::SQS::Queue
+    Properties:
+      QueueName: mahjong-score-queue
   MahjongScoreLambdaFunction:
     Type: "AWS::Serverless::Function"
     Properties:
@@ -15,6 +19,8 @@ Resources:
           GOOGLE_PRIVATE_KEY: GOOGLE_PRIVATE_KEY
           GOOGLE_SHEET_ID: GOOGLE_SHEET_ID
           TENHO_ROOM_NUMBER: TENHO_ROOM_NUMBER
+          SQS_QUEUE_URL: SQS_QUEUE_URL
+          AWS_REGION: ap-northeast-1
           TZ: 'Asia/Tokyo'
     Metadata:
       BuildMethod: esbuild
