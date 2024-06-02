@@ -1,4 +1,4 @@
-import { formattedFetchDate } from "../utils/date";
+import { formattedFetchDate } from "../../utils/date";
 import { DownloadAndExtractFileFunction } from "./stream";
 import env from "dotenv"
 env.config()
