@@ -1,8 +1,8 @@
 import axios, { AxiosResponse } from "axios";
 import { ITenhoClient } from "../../domain/infrastructure/tenho/client";
 import { createGunzip } from "zlib";
-import { createTenhoScoreList } from "../factory/tenhoList";
 import TenhoScoreList from "../../domain/collection/tenhoScoreList";
+import { createTenhoScoreList } from "./factory/tenhoList";
 // const roomNumber = `${process.env.TENHO_ROOM_NUMBER}`
 class Client implements ITenhoClient {
   private url: string;

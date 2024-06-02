@@ -12,8 +12,9 @@ class ConvertTenhoToSheet {
 
   async saveScore(enums: SheetIdEnums) {
     const nextId = await this.sheetUsecase.getNextId(enums)
-    const tenho3playsers = await this.tenhoUsecase.getTenhoScores(nextId, enums)
-    await this.sheetUsecase.insertPlayersResult(tenho3playsers, enums)
+    const tenhoScores = await this.tenhoUsecase.getTenhoScores(nextId, enums)
+    if (tenhoScores.length === 0) return
+    await this.sheetUsecase.insertPlayersResult(tenhoScores, enums)
   }
 }
 
