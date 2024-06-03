@@ -9,8 +9,7 @@ function getTodayDate(): string[]{
 
 function formattedFetchDate() : string {
   const [year, month, day] = getTodayDate();
-  // return `${year}${month}${day}`;
-  return "20240601"
+  return `${year}${month}${day}`;
 }
 
 function formattedInsertDate() : string {

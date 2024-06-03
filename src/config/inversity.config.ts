@@ -26,9 +26,6 @@ const googleSpreadsheetDoc = new GoogleSpreadsheet(sheetID, serviceAccountAuth);
 
 const tenhoUrl = `https://tenhou.net/sc/raw/dat/sca${formattedFetchDate()}.log.gz`;
 
-console.log(new IGoogleShpreadSheetClientImpl(googleSpreadsheetDoc));
-console.log(new ITenhoClientImpl(tenhoUrl));
-
 //usecase
 container.bind<GoogleSpreadSheetUsecase>(TYPES.GoogleSpreadSheetUsecase).to(GoogleSpreadSheetUsecase)
 container.bind<TenhoScoreUseCase>(TYPES.TenhoScoreUseCase).to(TenhoScoreUseCase)
