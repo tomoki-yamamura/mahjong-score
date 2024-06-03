@@ -1,8 +1,10 @@
+import { injectable } from "inversify";
 import { Queue } from "../domain/entites/queue";
 import { ISQSClient } from "../domain/infrastructure/aws/sqs";
 import { formattedInsertDate } from "../utils/date";
 
-export class CreateQueueUseCase {
+@injectable()
+class CreateQueueUseCase {
   constructor(private sqsClient: ISQSClient) {}
 
   async enque(queueUrl: string): Promise<void> {
@@ -16,3 +18,5 @@ export class CreateQueueUseCase {
     }
   }
 }
+
+export default CreateQueueUseCase

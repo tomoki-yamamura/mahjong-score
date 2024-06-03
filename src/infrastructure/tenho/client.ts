@@ -3,7 +3,9 @@ import { ITenhoClient } from "../../domain/infrastructure/tenho/client";
 import { createGunzip } from "zlib";
 import TenhoScoreList from "../../domain/collection/tenhoScoreList";
 import { createTenhoScoreList } from "./factory/tenhoList";
+import { injectable } from "inversify";
 
+@injectable()
 class ITenhoClientImpl implements ITenhoClient {
   private url: string;
   constructor(url: string) {

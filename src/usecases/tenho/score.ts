@@ -1,13 +1,16 @@
+import { inject, injectable } from "inversify";
 import TenhoScoreList from "../../domain/collection/tenhoScoreList";
 import { Row } from "../../domain/entites/row";
 import { SheetIdEnums } from "../../domain/enums/sheetId";
 import { ITenhoClient } from "../../domain/infrastructure/tenho/client";
 import { rowFromTenhoScore } from "../../infrastructure/tenho/factory/row";
+import TYPES from "../../config/inversity.types";
 const roomNumber = `${process.env.TENHO_ROOM_NUMBER}`
 
+@injectable()
 class TenhoScoreUseCase {
   private client: ITenhoClient;
-  constructor(client: ITenhoClient) {
+  constructor(@inject(TYPES.ITenhoClientImpl) client: ITenhoClient) {
     this.client = client
   }
 
