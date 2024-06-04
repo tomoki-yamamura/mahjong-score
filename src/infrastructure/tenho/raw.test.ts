@@ -1,6 +1,5 @@
 process.env.TENHO_ROOM_NUMBER = "LXXX";
 process.env.MAIN_PLAYERS = "playerA,playerB";
-import { convertToRawStrings } from "./raw";
 import * as data from "./mock-data/data";
 
 describe("convertToRawStrings Func", () => {
