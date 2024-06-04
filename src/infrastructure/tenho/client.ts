@@ -1,3 +1,4 @@
+import "reflect-metadata";
 import axios, { AxiosResponse } from "axios";
 import { ITenhoClient } from "../../domain/infrastructure/tenho/client";
 import { createGunzip } from "zlib";
@@ -17,6 +18,8 @@ class ITenhoClientImpl implements ITenhoClient {
       const rawString = await this.getRawStreamFromTenho();
       const scores = rawString.split("\n");
       const filtedScores = this.filterScoresByRoom(scores, roomNumber)
+      console.log(filtedScores);
+      
       const result = createTenhoScoreList(filtedScores)
       return result;
     } catch (error) {
