@@ -1,4 +1,4 @@
-import { JWT } from "google-auth-library";
+import "reflect-metadata";
 import { GoogleSpreadsheet } from "google-spreadsheet";
 import { IGoogleShpreadSheetClient } from "../../domain/infrastructure/google/client";
 import { Row } from "../../domain/entites/row";
@@ -21,9 +21,11 @@ class IGoogleShpreadSheetClientImpl implements IGoogleShpreadSheetClient {
   }
 
   async getNextId(sheetId: SheetIdEnums): Promise<number> {
+    console.log("called");
     await this.doc.loadInfo();
     const sheet = this.doc.sheetsByIndex[SheetId[sheetId]];
     const rows = await sheet.getRows();
+    console.log(rows);
     return rows.length + 1;
   }
 
