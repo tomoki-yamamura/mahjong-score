@@ -17,15 +17,16 @@ class IGoogleShpreadSheetClientImpl implements IGoogleShpreadSheetClient {
     const insertRows = convertInsertRows(insertDatas, headers);
     await this.doc.loadInfo();
     const sheet = this.doc.sheetsByIndex[SheetId[sheetId]];
+    console.log(insertRows);
+    
     await sheet.addRows(insertRows);
   }
 
   async getNextId(sheetId: SheetIdEnums): Promise<number> {
-    console.log("called");
     await this.doc.loadInfo();
     const sheet = this.doc.sheetsByIndex[SheetId[sheetId]];
     const rows = await sheet.getRows();
-    console.log(rows);
+    
     return rows.length + 1;
   }
 
@@ -34,6 +35,7 @@ class IGoogleShpreadSheetClientImpl implements IGoogleShpreadSheetClient {
     const sheet = this.doc.sheetsByIndex[SheetId[sheetId]];
     await sheet.loadHeaderRow();
     const headers: string[] = sheet.headerValues;
+    
     return headers;
   }
 }

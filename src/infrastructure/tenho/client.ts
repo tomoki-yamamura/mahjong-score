@@ -18,7 +18,6 @@ class ITenhoClientImpl implements ITenhoClient {
       const rawString = await this.getRawStreamFromTenho();
       const scores = rawString.split("\n");
       const filtedScores = this.filterScoresByRoom(scores, roomNumber)
-      console.log(filtedScores);
       
       const result = createTenhoScoreList(filtedScores)
       return result;
