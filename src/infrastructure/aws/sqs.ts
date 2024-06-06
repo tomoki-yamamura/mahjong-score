@@ -13,6 +13,8 @@ class ISQSClientImpl implements ISQSClient {
 
   async enqueue(queue: Queue, queueUrl: string): Promise<any> {
     try {
+      console.log(`${process.env.SQS_QUEUE_URL}`);
+      
       const command = new SendMessageCommand({
         QueueUrl: queueUrl,
         MessageBody: queue.body,

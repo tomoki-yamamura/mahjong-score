@@ -1,6 +1,7 @@
 import "reflect-metadata";
 import { Handler } from "aws-lambda";
-import { SQSClient } from "@aws-sdk/client-sqs";
+// import { ListQueuesCommand, SQSClient } from "@aws-sdk/client-sqs";
+import AWS from "aws-sdk";
 import env from "dotenv";
 env.config();
 
@@ -11,28 +12,34 @@ import container from "./config/inversity.config";
 import TYPES from "./config/inversity.types";
 import ConvertTenhoToSheetUsecase from "./usecases/convertTenhoToSheet";
 
+// const sqsClient = new SQSClient({
+//   region: "elasticmq",
+//   // region: `${process.env.AWS_REGION}`,
+//   endpoint: `${process.env.SQS_ENDPOINT}`,
+// });
+// console.log("sqsClient", sqsClient);
 
-const awssqsClient = new SQSClient({ region: `${process.env.AWS_REGION}` });
-const sqsClient = new SQSClientImpl(awssqsClient)
+// const sqsClientImpl = new SQSClientImpl(sqsClient);
 
 export const handler = async (): Promise<void> => {
   try {
-    // const tenhoUserCase = container.get<TenhoScoreUseCase>(TYPES.TenhoScoreUseCase)
-    // const tenhoUserCase = new TenhoScoreUseCase(tenhoClient);
-    // const sheetUseCase = new GoogleSpreadSheetUsecase(googleSpreadsheetClient);
-    // const convertUseCase = new ConvertTenhoToSheet(tenhoUserCase, sheetUseCase);
-    const convertUseCase = container.get<ConvertTenhoToSheetUsecase>(TYPES.ConvertTenhoToSheetUseCase)
+    const convertUseCase = container.get<ConvertTenhoToSheetUsecase>(
+      TYPES.ConvertTenhoToSheetUseCase
+    );
     await convertUseCase.saveScore("3players");
     await convertUseCase.saveScore("4players");
 
-    // const createQueueUseCase = new CreateQueueUseCase(sqsClient)
-    // await createQueueUseCase.enque(`${process.env.SQS_QUEUE_URL}`)
+    const sqs = new AWS.SQS({
+      apiVersion: "2012-11-05",
+      endpoint: `${process.env.SQS_ENDPOINT}`,
+    });
+    const data = await sqs.listQueues().promise();
+    console.log(data);
+
+    // const createQueueUseCase = new CreateQueueUseCase(sqsClientImpl);
+    // await createQueueUseCase.enque(`${process.env.SQS_QUEUE_URL}`);
     console.log("successfully inserted");
   } catch (error) {
     console.error(error);
   }
-}
-
-(async () => {
-  await handler()
-}) ()
+};
