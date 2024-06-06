@@ -2,6 +2,10 @@ version: '2.1'
 
 services:
   elasticmq:
+    container_name: mahjong-score-queue
     image: softwaremill/elasticmq
     ports:
       - "9324:9324"
+    volumes:
+      - ./elasticmq.conf:/opt/elasticmq.conf
+    command: -Dconfig.file=/opt/elasticmq.conf

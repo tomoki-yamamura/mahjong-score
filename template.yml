@@ -19,6 +19,7 @@ Resources:
           GOOGLE_PRIVATE_KEY: GOOGLE_PRIVATE_KEY
           GOOGLE_SHEET_ID: GOOGLE_SHEET_ID
           TENHO_ROOM_NUMBER: TENHO_ROOM_NUMBER
+          SQS_ENDPOINT: SQS_ENDPOINT
           SQS_QUEUE_URL: SQS_QUEUE_URL
           AWS_REGION: ap-northeast-1
           TZ: 'Asia/Tokyo'
