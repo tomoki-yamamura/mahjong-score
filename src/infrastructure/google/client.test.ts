@@ -5,7 +5,7 @@ import {
 } from "google-spreadsheet";
 import IGoogleShpreadSheetClientImpl from "./client";
 import { JWT } from "google-auth-library";
-import { SheetId } from "../../domain/enums/sheetId";
+import { SheetId } from "../../domain/values/enums/sheetId";
 import { Row } from "../../domain/entites/row";
 import UserScoresMap from "../../domain/collection/userScoreMap";
 

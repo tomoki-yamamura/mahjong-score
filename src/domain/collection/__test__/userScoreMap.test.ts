@@ -19,7 +19,16 @@ describe("UserScoresMap", () => {
     expectedMap.set("user2", user2Score);
     expectedMap.set("user3", user3Score);
 
-    // マップの内容を比較
     expect(updatedScores).toEqual(new UserScoresMap(expectedMap));
+  });
+
+  describe('addScore', () => {
+    it('should add a new score for a new user', () => {
+      const scoresMap = new Map<string, number>();
+      const userScores = new UserScoresMap(scoresMap);
+      const score = 10.1
+      userScores.addScore('test', 10.1);
+      expect(userScores.getScore('test')).toBe(Math.round(10.1));
+    });
   });
 });

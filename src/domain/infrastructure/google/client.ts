@@ -1,5 +1,5 @@
 import { Row } from "../../entites/row";
-import { SheetIdEnums } from "../../enums/sheetId";
+import { SheetIdEnums } from "../../values/enums/sheetId";
 
 export type IGoogleShpreadSheetClient = {
   save(insertDatas: Row[], sheetId: SheetIdEnums): Promise<void>;

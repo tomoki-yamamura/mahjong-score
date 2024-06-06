@@ -1,7 +1,7 @@
 import { inject, injectable } from "inversify";
 import TenhoScoreList from "../../domain/collection/tenhoScoreList";
 import { Row } from "../../domain/entites/row";
-import { SheetIdEnums } from "../../domain/enums/sheetId";
+import { SheetIdEnums } from "../../domain/values/enums/sheetId";
 import { ITenhoClient } from "../../domain/infrastructure/tenho/client";
 import { rowFromTenhoScore } from "../../infrastructure/tenho/factory/row";
 import TYPES from "../../config/inversity.types";

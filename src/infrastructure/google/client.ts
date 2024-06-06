@@ -3,7 +3,7 @@ import { GoogleSpreadsheet } from "google-spreadsheet";
 import { IGoogleShpreadSheetClient } from "../../domain/infrastructure/google/client";
 import { Row } from "../../domain/entites/row";
 import { convertInsertRows } from "./factory/insertRows";
-import { SheetId, SheetIdEnums } from "../../domain/enums/sheetId";
+import { SheetId, SheetIdEnums } from "../../domain/values/enums/sheetId";
 import { injectable } from "inversify";
 
 @injectable()
