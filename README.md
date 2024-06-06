@@ -45,17 +45,15 @@ You have to set PlayerName matches the player name you use in Tenho
 
 ```
 
-## Installation
+4. Docker installed and running
+5. AWS SAM CLI installed
 
-To install the Mahjong Score Collector, follow these steps:
+## How to run
 
-1. Create the google sheet [here](https://developers.google.com/sheets/api/quickstart/nodejs)
-2. npm i (node >= 18)
-3. npm run start
+1. npm run sam:build
+2. npm run sam:invoke
 
-## Test
-
-To run test:
+## How to test
 
 1. npm run test
 
