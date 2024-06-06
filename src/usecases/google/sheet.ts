@@ -1,11 +1,14 @@
+import { inject, injectable } from "inversify";
 import { Row } from "../../domain/entites/row";
-import { SheetIdEnums } from "../../domain/enums/sheetId";
+import { SheetIdEnums } from "../../domain/values/enums/sheetId";
 import { IGoogleShpreadSheetClient } from "../../domain/infrastructure/google/client";
 import { ITenhoClient } from "../../domain/infrastructure/tenho/client";
+import TYPES from "../../config/inversity.types";
 
+@injectable()
 class GoogleSpreadSheetUsecase {
   private client: IGoogleShpreadSheetClient;
-  constructor(client: IGoogleShpreadSheetClient) {
+  constructor(@inject(TYPES.IGoogleShpreadSheetClientImpl) client: IGoogleShpreadSheetClient) {
     this.client = client
   }
 

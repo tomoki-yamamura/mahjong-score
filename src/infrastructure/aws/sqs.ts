@@ -1,8 +1,10 @@
 import { SQSClient, SendMessageCommand } from "@aws-sdk/client-sqs";
 import { ISQSClient } from "../../domain/infrastructure/aws/sqs";
 import { Queue } from "../../domain/entites/queue";
+import { injectable } from "inversify";
 
-export class SQSClientImpl implements ISQSClient {
+@injectable()
+class ISQSClientImpl implements ISQSClient {
   private client: SQSClient;
 
   constructor(sqsClient: SQSClient) {
@@ -21,3 +23,5 @@ export class SQSClientImpl implements ISQSClient {
     }
   }
 }
+
+export default ISQSClientImpl

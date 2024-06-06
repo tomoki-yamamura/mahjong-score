@@ -1,4 +1,4 @@
-import { SheetIdEnums } from "../enums/sheetId";
+import { SheetIdEnums } from "../values/enums/sheetId";
 
 class TenhoScoreList {
   private list: string[];
