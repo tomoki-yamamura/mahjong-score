@@ -12,6 +12,8 @@ import { formattedFetchDate } from "../utils/date";
 import TenhoScoreUseCase from "../usecases/tenho/score";
 import GoogleSpreadSheetUsecase from "../usecases/google/sheet";
 import ConvertTenhoToSheetUsecase from "../usecases/convertTenhoToSheet";
+import { SQSClient } from "@aws-sdk/client-sqs";
+import CreateQueueUseCase from "../usecases/createQueueUseCase";
 
 const container = new Container();
 const sheetID = `${process.env.GOOGLE_SHEET_ID}`;
@@ -26,13 +28,21 @@ const googleSpreadsheetDoc = new GoogleSpreadsheet(sheetID, serviceAccountAuth);
 
 const tenhoUrl = `https://tenhou.net/sc/raw/dat/sca${formattedFetchDate()}.log.gz`;
 
+const sqsClient = new SQSClient({
+  region: `${process.env.AWS_REGION}`,
+  endpoint: `${process.env.SQS_ENDPOINT}`,
+});
+
+
 //usecase
 container.bind<GoogleSpreadSheetUsecase>(TYPES.GoogleSpreadSheetUsecase).to(GoogleSpreadSheetUsecase)
 container.bind<TenhoScoreUseCase>(TYPES.TenhoScoreUseCase).to(TenhoScoreUseCase)
 container.bind<ConvertTenhoToSheetUsecase>(TYPES.ConvertTenhoToSheetUseCase).to(ConvertTenhoToSheetUsecase)
+container.bind<CreateQueueUseCase>(TYPES.CreateQueueUseCase).to(CreateQueueUseCase)
 
 // infrastructure
 container.bind<IGoogleShpreadSheetClient>(TYPES.IGoogleShpreadSheetClientImpl).toConstantValue(new IGoogleShpreadSheetClientImpl(googleSpreadsheetDoc))
 container.bind<ITenhoClient>(TYPES.ITenhoClientImpl).toConstantValue(new ITenhoClientImpl(tenhoUrl))
+container.bind<ISQSClient>(TYPES.ISQSClientImpl).toConstantValue(new ISQSClientImpl(sqsClient))
 
 export default container;
