@@ -58,4 +58,4 @@ You have to set PlayerName matches the player name you use in Tenho
 1. npm run test
 
 ## Infrastructure
-![](./doc/mahjong.drawio.png)
+![](./doc/mahjong.png)
