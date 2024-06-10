@@ -1,11 +1,9 @@
 import "reflect-metadata";
 import { Handler } from "aws-lambda";
-import { SQSClient } from "@aws-sdk/client-sqs";
 import env from "dotenv";
 env.config();
 
 import CreateQueueUseCase from "./usecases/createQueueUseCase";
-import SQSClientImpl from "./infrastructure/aws/sqs";
 import container from "./config/inversity.config";
 import TYPES from "./config/inversity.types";
 import ConvertTenhoToSheetUsecase from "./usecases/convertTenhoToSheet";

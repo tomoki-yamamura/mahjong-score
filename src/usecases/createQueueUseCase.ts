@@ -9,13 +9,9 @@ class CreateQueueUseCase {
   constructor(@inject(TYPES.ISQSClientImpl) private sqsClient: ISQSClient) {}
 
   async enque(queueUrl: string): Promise<void> {
-    try {
       const body = `${formattedInsertDate()} result was inserted`
       const message = new Queue(body);
       await this.sqsClient.enqueue(message, queueUrl);
-    } catch (error) {
-      throw error
-    }
   }
 }
 

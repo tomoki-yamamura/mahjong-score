@@ -18,10 +18,11 @@ function parseUserScores(input: string): UserScoresMap {
   const userScores = new Map();
   const result = new UserScoresMap(userScores)
 
-  const regex = /([^\(\)]+)\(([\+\-]?\d+\.\d+)\)/g;
-  let match;
+  const regex = /([^()]+)\(([+-]?\d+\.\d+)\)/g;
+
+  const match = regex.exec(input)
   
-  while ((match = regex.exec(input)) !== null) {
+  while (match !== null) {
     const username = match[1].trim();
     const score = parseFloat(match[2]);
     result.addScore(username, score);

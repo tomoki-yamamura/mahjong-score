@@ -12,15 +12,11 @@ class ISQSClientImpl implements ISQSClient {
   }
 
   async enqueue(queue: Queue, queueUrl: string): Promise<void> {
-    try {
       const command = new SendMessageCommand({
         QueueUrl: queueUrl,
         MessageBody: queue.body,
       });
       await this.client.send(command);
-    } catch (error) {
-      throw error;
-    }
   }
 }
 

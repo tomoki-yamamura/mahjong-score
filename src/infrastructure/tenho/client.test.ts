@@ -19,6 +19,7 @@ describe("getTenhoRoomScoreDatas Func", () => {
 
     const result = await client.getTenhoRoomScoreDatas("LXXX")
     const expectedScores = new TenhoScoreList(data.expectedRowStrings)
+    expect(mockGetRawStreamFromTenho).toHaveBeenCalledTimes(1);
     expect(result).toEqual(expectedScores);
   });
 });

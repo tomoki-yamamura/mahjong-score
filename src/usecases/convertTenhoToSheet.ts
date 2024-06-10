@@ -1,5 +1,5 @@
 import { inject, injectable } from "inversify";
-import { SheetId, SheetIdEnums } from "../domain/values/enums/sheetId";
+import { SheetIdEnums } from "../domain/values/enums/sheetId";
 import GoogleSpreadSheetUsecase from "./google/sheet";
 import TenhoScoreUseCase from "./tenho/score";
 import TYPES from "../config/inversity.types";

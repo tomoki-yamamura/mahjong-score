@@ -4,8 +4,6 @@ import {
   GoogleSpreadsheetWorksheet,
 } from "google-spreadsheet";
 import IGoogleShpreadSheetClientImpl from "./client";
-import { JWT } from "google-auth-library";
-import { SheetId } from "../../domain/values/enums/sheetId";
 import { Row } from "../../domain/entites/row";
 import UserScoresMap from "../../domain/collection/userScoreMap";
 
@@ -16,11 +14,6 @@ describe("IGoogleShpreadSheetClientImpl", () => {
   let client: IGoogleShpreadSheetClientImpl;
   let mockDoc: jest.Mocked<GoogleSpreadsheet>;
   let mockSheet: jest.Mocked<GoogleSpreadsheetWorksheet>;
-  const mockJWT = new JWT({
-    email: "test@example.com",
-    key: "-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----\n",
-    scopes: ["https://www.googleapis.com/auth/spreadsheets"],
-  });
 
   beforeEach(() => {
     mockSheet = {
@@ -38,7 +31,7 @@ describe("IGoogleShpreadSheetClientImpl", () => {
         "PlayerB",
         "PlayerC",
       ],
-    } as any;
+    } as unknown as jest.Mocked<GoogleSpreadsheetWorksheet>;
 
     mockDoc = {
       useServiceAccountAuth: jest.fn(),

@@ -27,7 +27,7 @@ describe("UserScoresMap", () => {
       const scoresMap = new Map<string, number>();
       const userScores = new UserScoresMap(scoresMap);
       const score = 10.1
-      userScores.addScore('test', 10.1);
+      userScores.addScore('test', score);
       expect(userScores.getScore('test')).toBe(Math.round(10.1));
     });
   });
